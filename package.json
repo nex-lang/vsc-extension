@@ -3,8 +3,12 @@
   "displayName": "nex",
   "description": "File logo for .ex / .nex support. https://github.com/nex-lang",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nex-lang/vsc-extension"
+  },
   "engines": {
-    "vscode": "^1.91.0"
+    "vscode": "^1.88.0"
   },
   "categories": [
     "Other"
@@ -12,19 +16,27 @@
   "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
-    "commands": [
+    "languages": [
       {
-        "command": "nex.helloWorld",
-        "title": "Hello World"
+        "id": "nex",
+        "extensions": [".nex"],
+        "aliases": ["Nex", "nex"]
+      },
+      {
+        "id": "nx",
+        "extensions": [".nx"],
+        "aliases": ["Nx", "nx"]
       }
     ],
-    "iconThemes": [
-      {
-        "id": "nex-icon-theme",
-        "label": "Nex Icon Theme",
-        "path": "./icons/nex-icon-theme.json"
+    "iconDefinitions": {
+      "nexFile": {
+        "iconPath": "./icons/nex.svg"
       }
-    ]
+    },
+    "fileExtensions": {
+      "nex": "nexFile",
+      "nx": "nexFile"
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
@@ -38,7 +50,7 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.91.0",
+    "@types/vscode": "^1.88.0",
     "@types/mocha": "^10.0.7",
     "@types/node": "20.x",
     "@typescript-eslint/eslint-plugin": "^7.14.1",
